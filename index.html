@@ -173,11 +173,43 @@
 
         </ul>
 
-        <button id="menuBtn">
+        <div class="headerActions">
 
-            <i class="fa-solid fa-bars"></i>
+    <button id="menuBtn">
+
+        <i class="fa-solid fa-bars"></i>
+
+    </button>
+
+
+    <button id="threeDotBtn">
+
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+
+    </button>
+
+
+    <div id="threeDotMenu">
+
+        <button id="openAdmin">
+
+            <i class="fa-solid fa-user-shield"></i>
+            Admin Panel
 
         </button>
+
+
+        <button id="checkRegistration">
+
+            <i class="fa-solid fa-ticket"></i>
+            Check WIN ID
+
+        </button>
+
+
+    </div>
+
+        </div>
 
     </nav>
 
@@ -475,130 +507,6 @@
         <p>Custom Rooms</p>
 
     </div>
-
-    <div class="statCard">
-
-        <i class="fa-solid fa-trophy"></i>
-
-        <h2 id="winnerCount">0</h2>
-
-        <p>Total Winners</p>
-
-    </div>
-
-</section>
-
-<!-- ===========================
-     LUCKY DRAW SECTION
-=========================== -->
-
-<section id="luckyDraw">
-
-    <div class="sectionTitle">
-
-        <h2>Lucky Draw</h2>
-
-        <p>Register now and win exciting cash prizes.</p>
-
-    </div>
-
-    <div id="luckyDrawContainer" class="cardGrid">
-
-        <!-- Lucky Draw Cards from Firebase -->
-
-    </div>
-
-</section>
-
-<!-- ===========================
-     FREE FIRE CUSTOM SECTION
-=========================== -->
-
-<section id="custom">
-
-    <div class="sectionTitle">
-
-        <h2>Free Fire Custom Rooms</h2>
-
-        <p>Daily Solo • Duo • Squad • Clash Squad Matches</p>
-
-    </div>
-
-    <div id="customContainer" class="cardGrid">
-
-        <!-- Custom Match Cards from Firebase -->
-
-    </div>
-
-</section>
-
-<!-- ===========================
-     GAMING SHOP
-=========================== -->
-
-<section id="shop">
-
-    <div class="sectionTitle">
-
-        <h2>Gaming Shop</h2>
-
-        <p>Buy gaming products instantly.</p>
-
-    </div>
-
-    <div class="shopGrid">
-
-        <div class="shopCard">
-
-            <i class="fa-solid fa-id-card"></i>
-
-            <h3>Free Fire IDs</h3>
-
-            <p>Verified gaming accounts.</p>
-
-            <button class="shopBtn">
-
-                View IDs
-
-            </button>
-
-        </div>
-
-        <div class="shopCard">
-
-            <i class="fa-solid fa-gem"></i>
-
-            <h3>Diamond Top-Up</h3>
-
-            <p>Fast and secure delivery.</p>
-
-            <button class="shopBtn">
-
-                Buy Diamonds
-
-            </button>
-
-        </div>
-
-        <div class="shopCard">
-
-            <i class="fa-brands fa-instagram"></i>
-
-            <h3>Instagram Followers</h3>
-
-            <p>Grow your profile quickly.</p>
-
-            <button class="shopBtn">
-
-                Order Now
-
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
 
 <!-- PART 1B CONTINUES -->
   <!-- ===========================
@@ -900,6 +808,61 @@
             Copy Registration ID
 
         </button>
+        
+        <button id="backHome">
+
+    Back To Home
+
+        </button>
+
+        
+
+    </div>
+
+</div>
+
+
+<!-- ===========================
+     CHECK REGISTRATION ID
+=========================== -->
+
+<div id="checkIdModal" class="modal">
+
+    <div class="modalContent">
+
+        <span id="closeCheckId" class="closeAdmin">
+
+    &times;
+
+        </span>
+
+
+        <h2>
+
+            Check Registration ID
+
+        </h2>
+
+
+        <input
+            type="text"
+            id="searchRegistrationId"
+            placeholder="Enter WIN ID">
+
+
+        <button id="searchIdBtn">
+
+            Check Status
+
+        </button>
+
+
+        <p id="registrationResult">
+
+            
+
+        </p>
+
 
     </div>
 
