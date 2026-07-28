@@ -82,10 +82,9 @@ const registrationsRef = collection(db,"registrations");
 ========================================================== */
 
 let websiteSettings = {};
-
 let currentPlayer = {};
-
 let registrationNumber = 0;
+let currentRegistrationDocId = "";
 
 /* ==========================================================
    DOM ELEMENTS
@@ -102,6 +101,23 @@ const noticeTicker = document.getElementById("noticeTicker");
 const toast = document.getElementById("toast");
 
 const toastMessage = document.getElementById("toastMessage");
+
+/* ==========================================================
+   MENU & MODALS
+========================================================== */
+
+const threeDotBtn = document.getElementById("threeDotBtn");
+const threeDotMenu = document.getElementById("threeDotMenu");
+
+const openAdmin = document.getElementById("openAdmin");
+const adminLoginModal = document.getElementById("adminLoginModal");
+
+const checkRegistration = document.getElementById("checkRegistration");
+const checkIdModal = document.getElementById("checkIdModal");
+
+const closeCheckId = document.getElementById("closeCheckId");
+
+const backHome = document.getElementById("backHome");
 
 /* ==========================================================
    PART 1A ENDS
@@ -216,48 +232,57 @@ async function loadWebsiteSettings(){
 
 }
 
+
 /* ==========================================================
    PASSWORD CHECK
 ========================================================== */
 
 const unlockButton = document.getElementById("unlockWebsite");
 
-if(unlockButton){
+if (unlockButton) {
 
-    unlockButton.addEventListener("click",checkPassword);
+    unlockButton.addEventListener("click", async () => {
 
-}
+        const password = document
+            .getElementById("websitePassword")
+            .value
+            .trim();
 
-async function checkPassword(){
+        if (!password) {
 
-    const password = document
-        .getElementById("websitePassword")
-        .value
-        .trim();
+            showToast("Enter Website Password");
 
-    if(password===""){
+            return;
 
-        showToast("Enter Password");
+        }
 
-        return;
+        try {
 
-    }
+            await loadWebsiteSettings();
 
-    if(password===websiteSettings.websitePassword){
+            if (password === websiteSettings.websitePassword) {
 
-        passwordScreen.style.display="none";
+                passwordScreen.style.display = "none";
 
-        mainWebsite.style.display="block";
+                mainWebsite.style.display = "block";
 
-        showToast("Welcome to Winner");
+                showToast("Welcome to Winner");
 
-    }
+            } else {
 
-    else{
+                showToast("Incorrect Password");
 
-        showToast("Incorrect Password");
+            }
 
-    }
+        } catch (error) {
+
+            console.error(error);
+
+            showToast("Unable to Verify Password");
+
+        }
+
+    });
 
 }
 
@@ -654,64 +679,58 @@ document.getElementById(
     verifyPayment
 );
 
-async function verifyPayment(){
+async function verifyPayment() {
 
-    const transactionId =
-    document.getElementById(
-        "transactionId"
-    ).value.trim();
+    const transactionId = document
+        .getElementById("transactionId")
+        .value
+        .trim();
 
-    if(transactionId===""){
+    if (transactionId === "") {
 
-        showToast(
-            "Enter Transaction ID"
-        );
+        showToast("Enter Transaction ID");
 
         return;
 
     }
 
-    registrationNumber++;
+    try {
 
-    const registrationId =
-    "WIN-" +
-    new Date().getFullYear() +
-    "-" +
-    String(registrationNumber)
-    .padStart(6,"0");
+        const snapshot = await getDocs(registrationsRef);
 
-    currentPlayer.registrationId =
-    registrationId;
+        const registrationNumber = snapshot.size + 1;
 
-    currentPlayer.transactionId =
-    transactionId;
+        const registrationId =
+            "WIN-" +
+            new Date().getFullYear() +
+            "-" +
+            String(registrationNumber).padStart(6, "0");
 
-    currentPlayer.createdAt =
-    serverTimestamp();
+        currentPlayer.registrationId = registrationId;
+        currentPlayer.transactionId = transactionId;
+        currentPlayer.status = "Pending";
+        currentPlayer.approved = false;
+        currentPlayer.createdAt = serverTimestamp();
 
-    await addDoc(
-        registrationsRef,
-        currentPlayer
-    );
+        await addDoc(registrationsRef, currentPlayer);
 
-    document.getElementById(
-        "paymentModal"
-    ).style.display="none";
+        document.getElementById("paymentModal").style.display = "none";
+        document.getElementById("successModal").style.display = "flex";
 
-    document.getElementById(
-        "successModal"
-    ).style.display="flex";
+        document.getElementById("registrationId").textContent =
+            registrationId;
 
-    document.getElementById(
-        "registrationId"
-    ).textContent=
-    registrationId;
+        loadStats();
 
-    loadStats();
+        showToast("Registration Submitted Successfully");
 
-    showToast(
-        "Registration Successful"
-    );
+    } catch (error) {
+
+        console.error(error);
+
+        showToast("Registration Failed");
+
+    }
 
 }
 
@@ -739,6 +758,10 @@ document.getElementById(
 
     }
 );
+
+/* ==========================================================
+   CLOSE MODALS
+========================================================== */
 
 /* ==========================================================
    CLOSE MODALS
@@ -955,13 +978,8 @@ async function(){
 
 
 /* ==========================================================
-   END OF APP.JS
-========================================================== */
-
-
-/* ==========================
    THREE DOT MENU
-========================== */
+========================================================== */
 
 const threeDotBtn = document.getElementById("threeDotBtn");
 const threeDotMenu = document.getElementById("threeDotMenu");
@@ -982,16 +1000,83 @@ if (threeDotBtn && threeDotMenu) {
 
     });
 
+    threeDotMenu.addEventListener("click", (e) => {
+
+        e.stopPropagation();
+
+    });
+
 }
-/* ==========================
+
+/* ==========================================================
    ADMIN PANEL
-========================== */
+========================================================== */
 
 document.getElementById("openAdmin")?.addEventListener("click", () => {
+
+    threeDotMenu.classList.remove("show");
 
     document.getElementById("adminLoginModal").style.display = "flex";
 
 });
 
+/* ==========================================================
+   CHECK WIN ID
+========================================================== */
+
+document.getElementById("checkRegistration")?.addEventListener("click", () => {
+
+    threeDotMenu.classList.remove("show");
+
+    document.getElementById("checkIdModal").style.display = "flex";
+
+});
+
+/* ==========================================================
+   CLOSE CHECK WIN ID
+========================================================== */
+
+document.getElementById("closeCheckId")?.addEventListener("click", () => {
+
+    document.getElementById("checkIdModal").style.display = "none";
+
+});
+
+/* ==========================================================
+   CLOSE ADMIN LOGIN
+========================================================== */
+
+document.querySelectorAll(".closeAdmin").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        document.getElementById("adminLoginModal").style.display = "none";
+        document.getElementById("checkIdModal").style.display = "none";
+
+    });
+
+});
+
+/* ==========================================================
+   BACK TO HOME
+========================================================== */
+
+document.getElementById("backHome")?.addEventListener("click", () => {
+
+    document.getElementById("successModal").style.display = "none";
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+});
+
+/* ==========================================================
+   END OF APP.JS
+========================================================== */
 
 
