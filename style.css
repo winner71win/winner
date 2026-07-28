@@ -1,0 +1,2011 @@
+/* ==========================================================
+   WINNER - STYLE.CSS
+   PART 1A
+   Reset • Variables • Body • Scrollbar • Animations
+========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+    font-family:'Poppins',sans-serif;
+}
+
+:root{
+
+    --primary:#FFD700;
+    --secondary:#FFB800;
+
+    --black:#090909;
+    --dark:#111111;
+    --light:#F5F5F5;
+
+    --card:rgba(255,255,255,.06);
+    --glass:rgba(255,255,255,.08);
+
+    --success:#00E676;
+    --danger:#FF3D57;
+
+    --border:rgba(255,215,0,.35);
+
+    --shadow:
+    0 10px 30px rgba(0,0,0,.45);
+
+    --goldGlow:
+    0 0 12px rgba(255,215,0,.35);
+
+    --radius:18px;
+
+    --transition:.35s ease;
+
+}
+
+html{
+
+    overflow-x:hidden;
+
+}
+
+body{
+
+    background:#090909;
+
+    color:#ffffff;
+
+    overflow-x:hidden;
+
+    min-height:100vh;
+
+    line-height:1.6;
+
+    position:relative;
+
+}
+
+/* Background Glow */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    top:-150px;
+    left:-150px;
+
+    width:350px;
+    height:350px;
+
+    background:#FFD70022;
+
+    filter:blur(120px);
+
+    z-index:-2;
+
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    right:-180px;
+    bottom:-180px;
+
+    width:380px;
+    height:380px;
+
+    background:#FF990011;
+
+    filter:blur(130px);
+
+    z-index:-2;
+
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#111;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(#FFD700,#FF9800);
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#FFD700;
+
+}
+
+/* Selection */
+
+::selection{
+
+    background:#FFD700;
+
+    color:#000;
+
+}
+
+/* Links */
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+/* Images */
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+/* Buttons */
+
+button{
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+}
+
+/* Inputs */
+
+input,
+textarea,
+select{
+
+    outline:none;
+
+    border:none;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+/* Sections */
+
+section{
+
+    width:100%;
+
+    padding:80px 8%;
+
+}
+
+/* Container */
+
+.container{
+
+    width:100%;
+
+    max-width:1300px;
+
+    margin:auto;
+
+}
+
+/* Glass Card */
+
+.glass{
+
+    background:var(--glass);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+}
+
+/* Fade Animation */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* Glow Animation */
+
+@keyframes glow{
+
+    0%{
+
+        box-shadow:0 0 10px rgba(255,215,0,.25);
+
+    }
+
+    50%{
+
+        box-shadow:0 0 28px rgba(255,215,0,.7);
+
+    }
+
+    100%{
+
+        box-shadow:0 0 10px rgba(255,215,0,.25);
+
+    }
+
+}
+
+/* Rotate */
+
+@keyframes rotate{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* Floating */
+
+@keyframes float{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+}
+
+/* PART 1A ENDS */
+/* ==========================================================
+   WINNER - STYLE.CSS
+   PART 1B
+   Loader + Password Screen
+========================================================== */
+
+/* ========= LOADER ========= */
+
+#loader{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#090909;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:20px;
+
+    z-index:99999;
+
+}
+
+.loaderGlow{
+
+    position:absolute;
+
+    width:260px;
+
+    height:260px;
+
+    background:rgba(255,215,0,.15);
+
+    border-radius:50%;
+
+    filter:blur(90px);
+
+}
+
+.loaderRing{
+
+    width:110px;
+
+    height:110px;
+
+    border:5px solid rgba(255,255,255,.08);
+
+    border-top:5px solid var(--primary);
+
+    border-radius:50%;
+
+    animation:rotate 1.2s linear infinite;
+
+    box-shadow:var(--goldGlow);
+
+}
+
+.loaderLogo{
+
+    width:70px;
+
+    margin-top:-90px;
+
+    animation:float 2.5s ease-in-out infinite;
+
+}
+
+#loader h1{
+
+    color:var(--primary);
+
+    font-size:34px;
+
+    letter-spacing:4px;
+
+    font-weight:700;
+
+}
+
+#loader p{
+
+    color:#bbbbbb;
+
+    font-size:15px;
+
+}
+
+.progressBar{
+
+    width:260px;
+
+    height:8px;
+
+    background:#222;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+#progress{
+
+    width:0;
+
+    height:100%;
+
+    background:linear-gradient(90deg,#FFD700,#FF9800);
+
+    border-radius:20px;
+
+}
+
+/* ========= PASSWORD SCREEN ========= */
+
+#passwordScreen{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(135deg,#090909,#141414);
+
+    padding:25px;
+
+}
+
+.loginCard{
+
+    width:100%;
+
+    max-width:420px;
+
+    padding:35px;
+
+    text-align:center;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    animation:fadeUp .8s ease;
+
+}
+
+.loginLogo{
+
+    width:85px;
+
+    margin:0 auto 20px;
+
+    animation:float 3s ease-in-out infinite;
+
+}
+
+.loginCard h2{
+
+    color:var(--primary);
+
+    margin-bottom:8px;
+
+}
+
+.loginCard p{
+
+    color:#cfcfcf;
+
+    margin-bottom:20px;
+
+}
+
+.inputBox{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:14px 16px;
+
+    background:#181818;
+
+    border:1px solid #2a2a2a;
+
+    border-radius:14px;
+
+    margin-bottom:18px;
+
+}
+
+.inputBox i{
+
+    color:var(--primary);
+
+    font-size:18px;
+
+}
+
+.inputBox input{
+
+    flex:1;
+
+    background:transparent;
+
+    color:#fff;
+
+    font-size:15px;
+
+}
+
+.inputBox input::placeholder{
+
+    color:#888;
+
+}
+
+#unlockWebsite{
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    background:linear-gradient(90deg,#FFD700,#FF9800);
+
+    color:#000;
+
+    font-weight:700;
+
+    font-size:16px;
+
+    margin-bottom:18px;
+
+}
+
+#unlockWebsite:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 0 20px rgba(255,215,0,.45);
+
+}
+
+#joinWhatsapp{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:#25D366;
+
+    font-weight:600;
+
+    margin-top:10px;
+
+}
+
+#joinWhatsapp:hover{
+
+    text-decoration:underline;
+
+}
+
+.loginCard small{
+
+    display:block;
+
+    margin-top:18px;
+
+    color:#888;
+
+    font-size:13px;
+
+}
+
+/* Hide Main Website Initially */
+
+#mainWebsite{
+
+    display:none;
+
+}
+
+/* PART 1B ENDS */
+/* ==========================================================
+   WINNER - STYLE.CSS
+   PART 1C
+   Header • Navbar • Hero Section
+========================================================== */
+
+/* ========= HEADER ========= */
+
+#mainHeader{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    padding:16px 8%;
+
+    background:rgba(9,9,9,.85);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,215,0,.15);
+
+    z-index:1000;
+
+}
+
+.navbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+/* Logo */
+
+.logoBox{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.navLogo{
+
+    width:34px;
+
+    height:34px;
+
+    object-fit:contain;
+
+    border-radius:50%;
+
+    animation:float 3s ease-in-out infinite;
+
+}
+
+.logoBox span{
+
+    color:var(--primary);
+
+    font-size:22px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+}
+
+/* Navigation */
+
+.navLinks{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:35px;
+
+    list-style:none;
+
+}
+
+.navLinks li a{
+
+    color:#ffffff;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    transition:var(--transition);
+
+}
+
+.navLinks li a:hover{
+
+    color:var(--primary);
+
+}
+
+/* Menu Button */
+
+#menuBtn{
+
+    display:none;
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.08);
+
+    color:#fff;
+
+    font-size:18px;
+
+}
+
+/* ========= HERO ========= */
+
+#home{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding-top:120px;
+
+    background:
+    radial-gradient(circle at top,
+    rgba(255,215,0,.12),
+    transparent 45%),
+    #090909;
+
+}
+
+.heroContent{
+
+    width:100%;
+
+    max-width:850px;
+
+    animation:fadeUp .9s ease;
+
+}
+
+.heroLogo{
+
+    width:110px;
+
+    margin:0 auto 25px;
+
+    animation:float 3s ease-in-out infinite;
+
+}
+
+.heroContent h1{
+
+    font-size:55px;
+
+    line-height:1.2;
+
+    margin-bottom:20px;
+
+    font-weight:700;
+
+}
+
+.heroContent span{
+
+    color:var(--primary);
+
+}
+
+.heroContent p{
+
+    color:#cfcfcf;
+
+    font-size:18px;
+
+    margin-bottom:35px;
+
+}
+
+/* Hero Buttons */
+
+.heroButtons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.heroButtons button{
+
+    padding:15px 30px;
+
+    border-radius:14px;
+
+    background:linear-gradient(90deg,#FFD700,#FF9800);
+
+    color:#000;
+
+    font-weight:700;
+
+    font-size:15px;
+
+    transition:var(--transition);
+
+}
+
+.heroButtons button:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 0 22px rgba(255,215,0,.45);
+
+}
+
+/* PART 1C ENDS */
+/* ==========================================================
+   WINNER - STYLE.CSS
+   PART 2A
+   Notice • Stats • Lucky Draw
+========================================================== */
+
+/* ========= SECTION TITLE ========= */
+
+.sectionTitle{
+
+    text-align:center;
+
+    margin-bottom:45px;
+
+}
+
+.sectionTitle h2{
+
+    font-size:40px;
+
+    color:var(--primary);
+
+    margin-bottom:12px;
+
+}
+
+.sectionTitle p{
+
+    color:#cfcfcf;
+
+    font-size:16px;
+
+}
+
+/* ========= NOTICE BAR ========= */
+
+#noticeSection{
+
+    padding:20px 8%;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    background:rgba(255,215,0,.08);
+
+    border-top:1px solid rgba(255,215,0,.20);
+
+    border-bottom:1px solid rgba(255,215,0,.20);
+
+}
+
+.noticeHeader{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:var(--primary);
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+}
+
+.noticeHeader i{
+
+    font-size:20px;
+
+}
+
+#noticeTicker{
+
+    flex:1;
+
+    color:#ffffff;
+
+    font-weight:500;
+
+}
+
+/* ========= STATS ========= */
+
+#statsSection{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+.statCard{
+
+    background:var(--glass);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:30px;
+
+    text-align:center;
+
+    transition:var(--transition);
+
+}
+
+.statCard:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:var(--goldGlow);
+
+}
+
+.statCard i{
+
+    font-size:34px;
+
+    color:var(--primary);
+
+    margin-bottom:18px;
+
+}
+
+.statCard h2{
+
+    font-size:34px;
+
+    color:#fff;
+
+    margin-bottom:8px;
+
+}
+
+.statCard p{
+
+    color:#cfcfcf;
+
+}
+
+/* ========= CARD GRID ========= */
+
+.cardGrid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:30px;
+
+}
+
+/* ========= LUCKY DRAW CARD ========= */
+
+.drawCard{
+
+    background:var(--glass);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    transition:var(--transition);
+
+    box-shadow:var(--shadow);
+
+}
+
+.drawCard:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:var(--goldGlow);
+
+}
+
+.drawTop{
+
+    background:linear-gradient(90deg,#FFD700,#FF9800);
+
+    color:#000;
+
+    padding:18px 22px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.drawTop h3{
+
+    font-size:22px;
+
+}
+
+.status{
+
+    padding:6px 14px;
+
+    border-radius:30px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    background:#00C853;
+
+    color:#fff;
+
+}
+
+.drawBody{
+
+    padding:25px;
+
+}
+
+.drawBody h2{
+
+    color:var(--primary);
+
+    font-size:34px;
+
+    margin-bottom:12px;
+
+}
+
+.drawBody p{
+
+    color:#ddd;
+
+    margin-bottom:18px;
+
+}
+
+.drawBody ul{
+
+    margin-left:18px;
+
+    color:#bfbfbf;
+
+}
+
+.drawBody li{
+
+    margin-bottom:10px;
+
+}
+
+.drawFooter{
+
+    padding:22px;
+
+}
+
+.registerLuckyBtn{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    background:linear-gradient(90deg,#FFD700,#FF9800);
+
+    color:#000;
+
+    font-size:16px;
+
+    font-weight:700;
+
+}
+
+.registerLuckyBtn:hover{
+
+    transform:scale(1.03);
+
+    box-shadow:0 0 20px rgba(255,215,0,.45);
+
+}
+
+/* PART 2A ENDS */
+/* ==========================================================
+   WINNER - STYLE.CSS
+   PART 2B
+   FF Custom • Shop • Features
+========================================================== */
+
+/* ========= FF CUSTOM ========= */
+
+#custom{
+
+    background:#0d0d0d;
+
+}
+
+.customCard{
+
+    background:var(--glass);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+.customCard:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:var(--goldGlow);
+
+}
+
+.customHeader{
+
+    background:linear-gradient(90deg,#FFD700,#FF9800);
+
+    color:#000;
+
+    padding:18px;
+
+    text-align:center;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.customBody{
+
+    padding:25px;
+
+}
+
+.customBody p{
+
+    color:#d9d9d9;
+
+    margin-bottom:12px;
+
+}
+
+.customBody span{
+
+    color:var(--primary);
+
+    font-weight:600;
+
+}
+
+.joinCustomBtn{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-top:18px;
+
+    border-radius:14px;
+
+    background:linear-gradient(90deg,#FFD700,#FF9800);
+
+    color:#000;
+
+    font-weight:700;
+
+    font-size:15px;
+
+}
+
+.joinCustomBtn:hover{
+
+    transform:scale(1.03);
+
+    box-shadow:0 0 18px rgba(255,215,0,.45);
+
+}
+
+/* ========= SHOP ========= */
+
+.shopGrid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:28px;
+
+}
+
+.shopCard{
+
+    background:var(--glass);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    text-align:center;
+
+    transition:var(--transition);
+
+}
+
+.shopCard:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:var(--goldGlow);
+
+}
+
+.shopCard i{
+
+    font-size:48px;
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+}
+
+.shopCard h3{
+
+    font-size:24px;
+
+    margin-bottom:12px;
+
+}
+
+.shopCard p{
+
+    color:#cfcfcf;
+
+    margin-bottom:22px;
+
+}
+
+.shopBtn{
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    background:linear-gradient(90deg,#FFD700,#FF9800);
+
+    color:#000;
+
+    font-weight:700;
+
+    font-size:15px;
+
+}
+
+.shopBtn:hover{
+
+    transform:scale(1.03);
+
+    box-shadow:0 0 20px rgba(255,215,0,.45);
+
+}
+
+/* ========= FEATURES ========= */
+
+.featureGrid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+
+}
+
+.featureCard{
+
+    background:var(--glass);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:28px;
+
+    text-align:center;
+
+    transition:var(--transition);
+
+}
+
+.featureCard:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:var(--goldGlow);
+
+}
+
+.featureCard i{
+
+    font-size:42px;
+
+    color:var(--primary);
+
+    margin-bottom:18px;
+
+}
+
+.featureCard h3{
+
+    font-size:22px;
+
+    margin-bottom:12px;
+
+}
+
+.featureCard p{
+
+    color:#cfcfcf;
+
+    font-size:15px;
+
+    line-height:1.7;
+
+}
+
+/* ========= COMMON BUTTON EFFECT ========= */
+
+.registerLuckyBtn,
+.joinCustomBtn,
+.shopBtn{
+
+    transition:.35s ease;
+
+}
+
+.registerLuckyBtn:active,
+.joinCustomBtn:active,
+.shopBtn:active{
+
+    transform:scale(.96);
+
+}
+
+/* PART 2B ENDS */
+/* ==========================================================
+   WINNER - STYLE.CSS
+   PART 2C
+   Support • Registration Modal • Payment Modal
+========================================================== */
+
+/* ========= SUPPORT ========= */
+
+#support{
+
+    background:#0a0a0a;
+
+}
+
+#supportForm{
+
+    max-width:700px;
+
+    margin:auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+#supportForm input,
+#supportForm textarea{
+
+    width:100%;
+
+    padding:16px 18px;
+
+    background:rgba(255,255,255,.06);
+
+    color:#fff;
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    transition:var(--transition);
+
+}
+
+#supportForm textarea{
+
+    resize:none;
+
+    min-height:180px;
+
+}
+
+#supportForm input:focus,
+#supportForm textarea:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 12px rgba(255,215,0,.25);
+
+}
+
+#supportForm button{
+
+    padding:16px;
+
+    border-radius:14px;
+
+    background:linear-gradient(90deg,#FFD700,#FF9800);
+
+    color:#000;
+
+    font-size:16px;
+
+    font-weight:700;
+
+}
+
+#supportForm button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:var(--goldGlow);
+
+}
+
+/* ========= MODAL ========= */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.82);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    z-index:9999;
+
+}
+
+.modalContent{
+
+    width:100%;
+
+    max-width:450px;
+
+    background:#121212;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    position:relative;
+
+    animation:fadeUp .35s ease;
+
+    box-shadow:var(--shadow);
+
+}
+
+.closeModal,
+.closePayment,
+.closeAdmin{
+
+    position:absolute;
+
+    top:15px;
+
+    right:20px;
+
+    font-size:26px;
+
+    cursor:pointer;
+
+    color:#fff;
+
+}
+
+.modalContent h2{
+
+    color:var(--primary);
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+}
+
+.modalContent input{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-bottom:15px;
+
+    border-radius:12px;
+
+    background:#1b1b1b;
+
+    color:#fff;
+
+    border:1px solid #333;
+
+}
+
+.modalContent input:focus{
+
+    border-color:var(--primary);
+
+}
+
+/* ========= PAYMENT ========= */
+
+.scannerImage{
+
+    width:220px;
+
+    margin:15px auto;
+
+    border-radius:16px;
+
+    border:3px solid var(--primary);
+
+}
+
+#upiId{
+
+    text-align:center;
+
+    color:var(--primary);
+
+    font-weight:700;
+
+    margin-bottom:18px;
+
+}
+
+#submitPayment{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    background:linear-gradient(90deg,#FFD700,#FF9800);
+
+    color:#000;
+
+    font-size:16px;
+
+    font-weight:700;
+
+}
+
+#submitPayment:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:var(--goldGlow);
+
+}
+
+/* ========= SUCCESS ========= */
+
+.successCard{
+
+    text-align:center;
+
+}
+
+.successCard i{
+
+    font-size:70px;
+
+    color:var(--success);
+
+    margin-bottom:18px;
+
+}
+
+#registrationId{
+
+    color:var(--primary);
+
+    font-size:28px;
+
+    margin:20px 0;
+
+    word-break:break-all;
+
+}
+
+#copyRegistrationId{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    background:linear-gradient(90deg,#FFD700,#FF9800);
+
+    color:#000;
+
+    font-weight:700;
+
+}
+
+/* PART 2C ENDS */
+/* ==========================================================
+   WINNER - STYLE.CSS
+   PART 2D
+   Footer • Toast • Mobile Responsive
+========================================================== */
+
+/* ========= FOOTER ========= */
+
+footer{
+
+    background:#080808;
+
+    border-top:1px solid rgba(255,215,0,.15);
+
+    padding:50px 8%;
+
+    text-align:center;
+
+}
+
+.footerLogo{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:20px;
+
+}
+
+.footerLogo img{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+}
+
+.footerLogo h2{
+
+    color:var(--primary);
+
+    font-size:26px;
+
+    letter-spacing:1px;
+
+}
+
+footer p{
+
+    color:#bfbfbf;
+
+    margin-bottom:25px;
+
+}
+
+.footerLinks{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:22px;
+
+}
+
+.footerLinks a{
+
+    color:#ffffff;
+
+    transition:var(--transition);
+
+}
+
+.footerLinks a:hover{
+
+    color:var(--primary);
+
+}
+
+/* ========= TOAST ========= */
+
+#toast{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:15px 20px;
+
+    border-radius:14px;
+
+    background:#1b1b1b;
+
+    border:1px solid var(--border);
+
+    color:#fff;
+
+    box-shadow:var(--shadow);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(20px);
+
+    transition:.35s ease;
+
+    z-index:99999;
+
+}
+
+#toast.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+
+}
+
+#toast i{
+
+    color:var(--success);
+
+    font-size:20px;
+
+}
+
+/* ========= RESPONSIVE ========= */
+
+@media(max-width:992px){
+
+    .navLinks{
+
+        display:none;
+
+    }
+
+    #menuBtn{
+
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+    }
+
+    .heroContent h1{
+
+        font-size:42px;
+
+    }
+
+    .sectionTitle h2{
+
+        font-size:32px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    section{
+
+        padding:70px 6%;
+
+    }
+
+    .heroContent h1{
+
+        font-size:34px;
+
+    }
+
+    .heroContent p{
+
+        font-size:16px;
+
+    }
+
+    .heroButtons{
+
+        flex-direction:column;
+
+    }
+
+    .heroButtons button{
+
+        width:100%;
+
+    }
+
+    .shopGrid,
+    .featureGrid,
+    .cardGrid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .loginCard{
+
+        padding:28px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .logoBox span{
+
+        font-size:18px;
+
+    }
+
+    .heroLogo{
+
+        width:85px;
+
+    }
+
+    .heroContent h1{
+
+        font-size:28px;
+
+    }
+
+    .sectionTitle h2{
+
+        font-size:28px;
+
+    }
+
+    .statCard{
+
+        padding:22px;
+
+    }
+
+    .modalContent{
+
+        padding:22px;
+
+    }
+
+    .scannerImage{
+
+        width:180px;
+
+    }
+
+    #toast{
+
+        left:15px;
+
+        right:15px;
+
+        bottom:15px;
+
+    }
+
+}
+
+/* ========= END OF STYLE.CSS ========= */
+
+
+
+
+
+
+
+
