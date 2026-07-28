@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Winner | Free Fire Custom | Lucky Draw | Gaming Store</title>
+
+    <meta name="description"
+          content="Winner - India's Premium Gaming Platform for Free Fire Custom Rooms, Lucky Draws, FF ID Sales, Diamonds, Instagram Followers and Secure Withdrawals.">
+
+    <meta name="keywords"
+          content="Winner, Free Fire, FF Custom, Lucky Draw, Gaming Store, FF ID, Diamonds">
+
+    <meta name="author"
+          content="Winner">
+
+    <meta name="theme-color"
+          content="#111111">
+
+    <meta property="og:title"
+          content="Winner">
+
+    <meta property="og:description"
+          content="India's Premium Gaming Platform">
+
+    <meta property="og:image"
+          content="images/logo.png">
+
+    <meta property="og:type"
+          content="website">
+
+    <meta property="og:url"
+          content="https://winner7.web.app">
+
+    <link rel="icon"
+          href="images/logo.png">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="style.css">
+</head>
+
+<body>
+
+<!-- ===========================
+     LOADING SCREEN
+=========================== -->
+
+<div id="loader">
+
+    <div class="loaderGlow"></div>
+
+    <div class="loaderRing"></div>
+
+    <img src="images/logo.png"
+         alt="Winner Logo"
+         class="loaderLogo">
+
+    <h1>WINNER</h1>
+
+    <p>Connecting Secure Firebase Server...</p>
+
+    <div class="progressBar">
+
+        <div id="progress"></div>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+     PASSWORD SCREEN
+=========================== -->
+
+<section id="passwordScreen">
+
+    <div class="loginCard">
+
+        <img src="images/logo.png"
+             alt="Winner Logo"
+             class="loginLogo">
+
+        <h2>Winner</h2>
+
+        <p>
+
+            Enter Website Password
+
+        </p>
+
+        <div class="inputBox">
+
+            <i class="fa-solid fa-lock"></i>
+
+            <input
+                type="password"
+                id="websitePassword"
+                placeholder="Password">
+
+        </div>
+
+        <button id="unlockWebsite">
+
+            Enter Website
+
+        </button>
+
+        <a id="joinWhatsapp"
+           href="#"
+           target="_blank">
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+            Join WhatsApp Group
+
+        </a>
+
+        <small>
+
+            Password changes regularly.
+
+        </small>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+     MAIN WEBSITE
+=========================== -->
+
+<div id="mainWebsite" style="display:none;">
+
+<header id="mainHeader">
+
+    <nav class="navbar">
+
+        <div class="logoBox">
+
+            <img src="images/logo.png"
+                 alt="Winner Logo"
+                 class="navLogo">
+
+            <span>WINNER</span>
+
+        </div>
+
+        <ul class="navLinks">
+
+            <li><a href="#home">Home</a></li>
+
+            <li><a href="#luckyDraw">Lucky Draw</a></li>
+
+            <li><a href="#custom">FF Custom</a></li>
+
+            <li><a href="#shop">Shop</a></li>
+
+            <li><a href="#support">Support</a></li>
+
+        </ul>
+
+        <button id="menuBtn">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+    </nav>
+
+</header>
+
+<section id="home">
+
+    <div class="heroContent">
+
+        <img src="images/logo.png"
+             alt="Winner"
+             class="heroLogo">
+
+        <h1>
+
+            India's Premium Gaming Platform
+
+        </h1>
+
+        <p>
+
+            Lucky Draw • Free Fire Custom • FF IDs • Diamonds • Instagram Followers
+
+        </p>
+
+        <div class="heroButtons">
+
+            <button id="playLucky">
+
+                Lucky Draw
+
+            </button>
+
+            <button id="playCustom">
+
+                FF Custom
+
+            </button>
+
+            <button id="openShop">
+
+                Shop
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PART 1A CONTINUES -->
+
+  <!-- ===========================
+     LIVE NOTICE BAR
+=========================== -->
+
+<section id="noticeSection">
+
+    <div class="noticeHeader">
+
+        <i class="fa-solid fa-bullhorn"></i>
+
+        <span>Latest Announcements</span>
+
+    </div>
+
+    <marquee id="noticeTicker"
+             behavior="scroll"
+             direction="left">
+
+        Loading latest announcements...
+
+    </marquee>
+
+</section>
+
+<!-- ===========================
+     QUICK STATS
+=========================== -->
+
+<section id="statsSection">
+
+    <div class="statCard">
+
+        <i class="fa-solid fa-users"></i>
+
+        <h2 id="playersCount">0</h2>
+
+        <p>Registered Players</p>
+
+    </div>
+
+    <div class="statCard">
+
+        <i class="fa-solid fa-gift"></i>
+
+        <h2 id="drawCount">0</h2>
+
+        <p>Lucky Draws</p>
+
+    </div>
+
+    <div class="statCard">
+
+        <i class="fa-solid fa-gamepad"></i>
+
+        <h2 id="customCount">0</h2>
+
+        <p>Custom Rooms</p>
+
+    </div>
+
+    <div class="statCard">
+
+        <i class="fa-solid fa-trophy"></i>
+
+        <h2 id="winnerCount">0</h2>
+
+        <p>Total Winners</p>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+     LUCKY DRAW SECTION
+=========================== -->
+
+<section id="luckyDraw">
+
+    <div class="sectionTitle">
+
+        <h2>Lucky Draw</h2>
+
+        <p>Register now and win exciting cash prizes.</p>
+
+    </div>
+
+    <div id="luckyDrawContainer" class="cardGrid">
+
+        <!-- Lucky Draw Cards from Firebase -->
+
+    </div>
+
+</section>
+
+<!-- ===========================
+     FREE FIRE CUSTOM SECTION
+=========================== -->
+
+<section id="custom">
+
+    <div class="sectionTitle">
+
+        <h2>Free Fire Custom Rooms</h2>
+
+        <p>Daily Solo • Duo • Squad • Clash Squad Matches</p>
+
+    </div>
+
+    <div id="customContainer" class="cardGrid">
+
+        <!-- Custom Match Cards from Firebase -->
+
+    </div>
+
+</section>
+
+<!-- ===========================
+     GAMING SHOP
+=========================== -->
+
+<section id="shop">
+
+    <div class="sectionTitle">
+
+        <h2>Gaming Shop</h2>
+
+        <p>Buy gaming products instantly.</p>
+
+    </div>
+
+    <div class="shopGrid">
+
+        <div class="shopCard">
+
+            <i class="fa-solid fa-id-card"></i>
+
+            <h3>Free Fire IDs</h3>
+
+            <p>Verified gaming accounts.</p>
+
+            <button class="shopBtn">
+
+                View IDs
+
+            </button>
+
+        </div>
+
+        <div class="shopCard">
+
+            <i class="fa-solid fa-gem"></i>
+
+            <h3>Diamond Top-Up</h3>
+
+            <p>Fast and secure delivery.</p>
+
+            <button class="shopBtn">
+
+                Buy Diamonds
+
+            </button>
+
+        </div>
+
+        <div class="shopCard">
+
+            <i class="fa-brands fa-instagram"></i>
+
+            <h3>Instagram Followers</h3>
+
+            <p>Grow your profile quickly.</p>
+
+            <button class="shopBtn">
+
+                Order Now
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PART 1B CONTINUES -->
+  <!-- ===========================
+     LIVE NOTICE BAR
+=========================== -->
+
+<section id="noticeSection">
+
+    <div class="noticeHeader">
+
+        <i class="fa-solid fa-bullhorn"></i>
+
+        <span>Latest Announcements</span>
+
+    </div>
+
+    <marquee id="noticeTicker"
+             behavior="scroll"
+             direction="left">
+
+        Loading latest announcements...
+
+    </marquee>
+
+</section>
+
+<!-- ===========================
+     QUICK STATS
+=========================== -->
+
+<section id="statsSection">
+
+    <div class="statCard">
+
+        <i class="fa-solid fa-users"></i>
+
+        <h2 id="playersCount">0</h2>
+
+        <p>Registered Players</p>
+
+    </div>
+
+    <div class="statCard">
+
+        <i class="fa-solid fa-gift"></i>
+
+        <h2 id="drawCount">0</h2>
+
+        <p>Lucky Draws</p>
+
+    </div>
+
+    <div class="statCard">
+
+        <i class="fa-solid fa-gamepad"></i>
+
+        <h2 id="customCount">0</h2>
+
+        <p>Custom Rooms</p>
+
+    </div>
+
+    <div class="statCard">
+
+        <i class="fa-solid fa-trophy"></i>
+
+        <h2 id="winnerCount">0</h2>
+
+        <p>Total Winners</p>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+     LUCKY DRAW SECTION
+=========================== -->
+
+<section id="luckyDraw">
+
+    <div class="sectionTitle">
+
+        <h2>Lucky Draw</h2>
+
+        <p>Register now and win exciting cash prizes.</p>
+
+    </div>
+
+    <div id="luckyDrawContainer" class="cardGrid">
+
+        <!-- Lucky Draw Cards from Firebase -->
+
+    </div>
+
+</section>
+
+<!-- ===========================
+     FREE FIRE CUSTOM SECTION
+=========================== -->
+
+<section id="custom">
+
+    <div class="sectionTitle">
+
+        <h2>Free Fire Custom Rooms</h2>
+
+        <p>Daily Solo • Duo • Squad • Clash Squad Matches</p>
+
+    </div>
+
+    <div id="customContainer" class="cardGrid">
+
+        <!-- Custom Match Cards from Firebase -->
+
+    </div>
+
+</section>
+
+<!-- ===========================
+     GAMING SHOP
+=========================== -->
+
+<section id="shop">
+
+    <div class="sectionTitle">
+
+        <h2>Gaming Shop</h2>
+
+        <p>Buy gaming products instantly.</p>
+
+    </div>
+
+    <div class="shopGrid">
+
+        <div class="shopCard">
+
+            <i class="fa-solid fa-id-card"></i>
+
+            <h3>Free Fire IDs</h3>
+
+            <p>Verified gaming accounts.</p>
+
+            <button class="shopBtn">
+
+                View IDs
+
+            </button>
+
+        </div>
+
+        <div class="shopCard">
+
+            <i class="fa-solid fa-gem"></i>
+
+            <h3>Diamond Top-Up</h3>
+
+            <p>Fast and secure delivery.</p>
+
+            <button class="shopBtn">
+
+                Buy Diamonds
+
+            </button>
+
+        </div>
+
+        <div class="shopCard">
+
+            <i class="fa-brands fa-instagram"></i>
+
+            <h3>Instagram Followers</h3>
+
+            <p>Grow your profile quickly.</p>
+
+            <button class="shopBtn">
+
+                Order Now
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PART 1B CONTINUES -->
+  <!-- ===========================
+     WHY CHOOSE WINNER
+=========================== -->
+
+<section id="features">
+
+    <div class="sectionTitle">
+
+        <h2>Why Choose Winner?</h2>
+
+        <p>Trusted by gamers across India.</p>
+
+    </div>
+
+    <div class="featureGrid">
+
+        <div class="featureCard">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <h3>100% Secure</h3>
+
+            <p>Your registrations and purchases are securely managed using Firebase.</p>
+
+        </div>
+
+        <div class="featureCard">
+
+            <i class="fa-solid fa-bolt"></i>
+
+            <h3>Instant Updates</h3>
+
+            <p>Lucky Draws, Custom Rooms and Notices update live.</p>
+
+        </div>
+
+        <div class="featureCard">
+
+            <i class="fa-solid fa-wallet"></i>
+
+            <h3>Fast Withdrawals</h3>
+
+            <p>Easy withdrawal request system with admin approval.</p>
+
+        </div>
+
+        <div class="featureCard">
+
+            <i class="fa-solid fa-headset"></i>
+
+            <h3>24×7 Support</h3>
+
+            <p>Contact the admin directly from the Support section.</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+     HOW IT WORKS
+=========================== -->
+
+<section id="howItWorks">
+
+    <div class="sectionTitle">
+
+        <h2>How It Works</h2>
+
+    </div>
+
+    <div class="steps">
+
+        <div class="step">
+
+            <span>1</span>
+
+            <h3>Register</h3>
+
+            <p>Register for Lucky Draw, Custom Room or Shop.</p>
+
+        </div>
+
+        <div class="step">
+
+            <span>2</span>
+
+            <h3>Pay</h3>
+
+            <p>Scan the QR Code and complete your payment.</p>
+
+        </div>
+
+        <div class="step">
+
+            <span>3</span>
+
+            <h3>Receive Registration ID</h3>
+
+            <p>Your Registration ID will be generated automatically.</p>
+
+        </div>
+
+        <div class="step">
+
+            <span>4</span>
+
+            <h3>Play & Win</h3>
+
+            <p>Participate, win prizes and request withdrawals.</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+     SUPPORT
+=========================== -->
+
+<section id="support">
+
+    <div class="sectionTitle">
+
+        <h2>Support</h2>
+
+        <p>Need help? Send a message directly to the admin.</p>
+
+    </div>
+
+    <form id="supportForm">
+
+        <input
+            type="text"
+            id="supportName"
+            placeholder="Full Name"
+            required>
+
+        <input
+            type="tel"
+            id="supportPhone"
+            placeholder="Mobile Number"
+            required>
+
+        <input
+            type="email"
+            id="supportEmail"
+            placeholder="Email Address"
+            required>
+
+        <textarea
+            id="supportMessage"
+            placeholder="Type your message..."
+            rows="6"
+            required></textarea>
+
+        <button type="submit">
+
+            Send Message
+
+        </button>
+
+    </form>
+
+</section>
+
+<!-- PART 1C ENDS -->
+  <!-- ===========================
+     REGISTRATION MODAL
+=========================== -->
+
+<div id="registrationModal" class="modal">
+
+    <div class="modalContent">
+
+        <span class="closeModal">&times;</span>
+
+        <h2>Player Registration</h2>
+
+        <form id="registrationForm">
+
+            <input
+                type="text"
+                id="playerName"
+                placeholder="Full Name"
+                required>
+
+            <input
+                type="tel"
+                id="playerPhone"
+                placeholder="Mobile Number"
+                required>
+
+            <input
+                type="email"
+                id="playerEmail"
+                placeholder="Email Address"
+                required>
+
+            <input
+                type="text"
+                id="gameUid"
+                placeholder="Free Fire UID (Optional)">
+
+            <button type="submit">
+
+                Continue
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+     PAYMENT MODAL
+=========================== -->
+
+<div id="paymentModal" class="modal">
+
+    <div class="modalContent">
+
+        <span class="closePayment">&times;</span>
+
+        <h2>Complete Payment</h2>
+
+        <img
+            src="images/scanner.png"
+            alt="UPI Scanner"
+            class="scannerImage">
+
+        <h3>Scan & Pay</h3>
+
+        <p id="upiId">
+
+            UPI ID Loading...
+
+        </p>
+
+        <input
+            type="text"
+            id="transactionId"
+            placeholder="Enter UPI Transaction ID"
+            required>
+
+        <button id="submitPayment">
+
+            Verify Payment
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+     REGISTRATION SUCCESS
+=========================== -->
+
+<div id="successModal" class="modal">
+
+    <div class="modalContent successCard">
+
+        <i class="fa-solid fa-circle-check"></i>
+
+        <h2>
+
+            Registration Successful
+
+        </h2>
+
+        <p>
+
+            Your Registration ID
+
+        </p>
+
+        <h1 id="registrationId">
+
+            WIN-2026-000001
+
+        </h1>
+
+        <small>
+
+            Save this Registration ID carefully.
+            It is required for withdrawals and support.
+
+        </small>
+
+        <button id="copyRegistrationId">
+
+            Copy Registration ID
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+     FOOTER
+=========================== -->
+
+<footer>
+
+    <div class="footerLogo">
+
+        <img
+            src="images/logo.png"
+            alt="Winner Logo">
+
+        <h2>
+
+            WINNER
+
+        </h2>
+
+    </div>
+
+    <p>
+
+        © 2026 Winner. All Rights Reserved.
+
+    </p>
+
+    <div class="footerLinks">
+
+        <a href="#home">Home</a>
+
+        <a href="#luckyDraw">Lucky Draw</a>
+
+        <a href="#custom">FF Custom</a>
+
+        <a href="#shop">Shop</a>
+
+        <a href="#support">Support</a>
+
+    </div>
+
+</footer>
+
+<!-- ===========================
+     HIDDEN ADMIN LOGIN
+=========================== -->
+
+<div id="adminLoginModal" class="modal">
+
+    <div class="modalContent">
+
+        <span class="closeAdmin">&times;</span>
+
+        <h2>Admin Login</h2>
+
+        <input
+            type="email"
+            id="adminEmail"
+            placeholder="Admin Email">
+
+        <input
+            type="password"
+            id="adminPassword"
+            placeholder="Password">
+
+        <button id="adminLoginButton">
+
+            Login
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+     TOAST NOTIFICATION
+=========================== -->
+
+<div id="toast">
+
+    <i class="fa-solid fa-circle-check"></i>
+
+    <span id="toastMessage">
+
+        Success
+
+    </span>
+
+</div>
+
+</div>
+<!-- End of #mainWebsite -->
+
+<script type="module" src="app.js"></script>
+
+</body>
+</html>
+
+
+
+  
+
+
+
+
+  
+  
