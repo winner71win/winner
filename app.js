@@ -952,11 +952,46 @@ async function(){
 
 };
 
+
+
 /* ==========================================================
    END OF APP.JS
 ========================================================== */
 
 
+/* ==========================
+   THREE DOT MENU
+========================== */
+
+const threeDotBtn = document.getElementById("threeDotBtn");
+const threeDotMenu = document.getElementById("threeDotMenu");
+
+if (threeDotBtn && threeDotMenu) {
+
+    threeDotBtn.addEventListener("click", (e) => {
+
+        e.stopPropagation();
+
+        threeDotMenu.classList.toggle("show");
+
+    });
+
+    document.addEventListener("click", () => {
+
+        threeDotMenu.classList.remove("show");
+
+    });
+
+}
+/* ==========================
+   ADMIN PANEL
+========================== */
+
+document.getElementById("openAdmin")?.addEventListener("click", () => {
+
+    document.getElementById("adminLoginModal").style.display = "flex";
+
+});
 
 
 
