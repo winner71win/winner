@@ -916,16 +916,24 @@ async function adminLogin() {
         }
 
         showToast("Admin Login Successful");
-       // Hide Main Website
-mainWebsite.style.display = "none";
 
-// Show Admin Panel
-document.getElementById("adminPanel").style.display = "block";
+        if (passwordScreen) {
 
-// Load Dashboard
-loadAdminDashboard();
+            passwordScreen.style.display = "none";
 
-        // Admin controls will be enabled here later
+        }
+
+        if (mainWebsite) {
+
+            mainWebsite.style.display = "none";
+
+        }
+
+        document.getElementById("adminPanel").style.display = "block";
+
+        loadAdminDashboard();
+
+        loadAdminRegistrations();
 
     }
 
@@ -1164,12 +1172,41 @@ document.getElementById("searchIdBtn")?.addEventListener("click", async () => {
 
 function loadAdminDashboard() {
 
-    document.getElementById("adminPlayersCount").textContent = "Loading...";
-    document.getElementById("adminPendingCount").textContent = "Loading...";
-    document.getElementById("adminLuckyCount").textContent = "Loading...";
-    document.getElementById("adminCustomCount").textContent = "Loading...";
+    onSnapshot(registrationsRef, (snapshot) => {
 
-}
+        let pending = 0;
+
+        document.getElementById("adminPlayersCount").textContent = snapshot.size;
+
+        snapshot.forEach((docItem) => {
+
+            const data = docItem.data();
+
+            if ((data.status || "Pending") === "Pending") {
+
+                pending++;
+
+            }
+
+        });
+
+        document.getElementById("adminPendingCount").textContent = pending;
+
+    });
+
+    onSnapshot(luckyDrawRef, (snapshot) => {
+
+        document.getElementById("adminLuckyCount").textContent = snapshot.size;
+
+    });
+
+    onSnapshot(customRef, (snapshot) => {
+
+        document.getElementById("adminCustomCount").textContent = snapshot.size;
+
+    });
+
+                   }
 
 /* ==========================================================
    ADMIN MENU
@@ -1247,6 +1284,36 @@ async function loadAdminRegistrations() {
     });
 
 }
+
+/* ==========================================================
+   APPROVE REGISTRATION
+========================================================== */
+
+window.approveRegistration = async function (docId) {
+
+    try {
+
+        await updateDoc(doc(db, "registrations", docId), {
+
+            status: "Approved",
+            approved: true,
+            approvedAt: serverTimestamp()
+
+        });
+
+        showToast("Registration Approved");
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        showToast("Approval Failed");
+
+    }
+
+};
 
 
 /* ==========================================================
