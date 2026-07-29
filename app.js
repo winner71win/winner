@@ -983,18 +983,17 @@ function showToast(message){
    LOGOUT
 ========================================================== */
 
-window.logoutAdmin=
-async function(){
+window.logoutAdmin = async function () {
 
     await signOut(auth);
 
-    showToast(
-        "Logged Out"
-    );
+    document.getElementById("adminPanel").style.display = "none";
+
+    mainWebsite.style.display = "block";
+
+    showToast("Logged Out");
 
 };
-
-
 
 /* ==========================================================
    THREE DOT MENU
@@ -1201,6 +1200,53 @@ document.querySelectorAll(".adminMenu").forEach(button => {
     });
 
 });
+
+/* ==========================================================
+   LOAD ADMIN REGISTRATIONS
+========================================================== */
+
+async function loadAdminRegistrations() {
+
+    const container = document.getElementById("adminRegistrationsContainer");
+
+    if (!container) return;
+
+    onSnapshot(registrationsRef, (snapshot) => {
+
+        container.innerHTML = "";
+
+        snapshot.forEach((docItem) => {
+
+            const data = docItem.data();
+
+            container.innerHTML += `
+
+            <div class="adminCard">
+
+                <h3>${data.name}</h3>
+
+                <p><b>WIN ID:</b> ${data.registrationId}</p>
+
+                <p><b>Phone:</b> ${data.phone}</p>
+
+                <p><b>Status:</b> ${data.status || "Pending"}</p>
+
+                <button class="adminBtn approveBtn"
+                    onclick="approveRegistration('${docItem.id}')">
+
+                    Approve
+
+                </button>
+
+            </div>
+
+            `;
+
+        });
+
+    });
+
+}
 
 
 /* ==========================================================
