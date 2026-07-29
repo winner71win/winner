@@ -763,9 +763,6 @@ document.getElementById(
     }
 );
 
-/* ==========================================================
-   CLOSE MODALS
-========================================================== */
 
 /* ==========================================================
    CLOSE MODALS
@@ -878,26 +875,32 @@ async function sendSupportMessage(e){
    ADMIN LOGIN
 ========================================================== */
 
-document.getElementById(
-    "adminLoginButton"
-)?.addEventListener(
+document.getElementById("adminLoginButton")?.addEventListener(
     "click",
     adminLogin
 );
 
-async function adminLogin(){
+async function adminLogin() {
 
-    const email =
-    document.getElementById(
-        "adminEmail"
-    ).value.trim();
+    const email = document
+        .getElementById("adminEmail")
+        .value
+        .trim();
 
-    const password =
-    document.getElementById(
-        "adminPassword"
-    ).value.trim();
+    const password = document
+        .getElementById("adminPassword")
+        .value
+        .trim();
 
-    try{
+    if (email === "" || password === "") {
+
+        showToast("Enter Email & Password");
+
+        return;
+
+    }
+
+    try {
 
         await signInWithEmailAndPassword(
             auth,
@@ -905,20 +908,23 @@ async function adminLogin(){
             password
         );
 
-        showToast(
-            "Admin Login Successful"
-        );
+        if (adminLoginModal) {
 
-        window.location.href=
-        "admin.html";
+            adminLoginModal.style.display = "none";
+
+        }
+
+        showToast("Admin Login Successful");
+
+        // Admin controls will be enabled here later
 
     }
 
-    catch(error){
+    catch (error) {
 
-        showToast(
-            "Invalid Admin Login"
-        );
+        console.error(error);
+
+        showToast("Invalid Admin Login");
 
     }
 
@@ -1015,9 +1021,17 @@ if (threeDotBtn && threeDotMenu) {
 
 document.getElementById("openAdmin")?.addEventListener("click", () => {
 
-    threeDotMenu.classList.remove("show");
+    if (threeDotMenu) {
 
-    document.getElementById("adminLoginModal").style.display = "flex";
+        threeDotMenu.classList.remove("show");
+
+    }
+
+    if (adminLoginModal) {
+
+        adminLoginModal.style.display = "flex";
+
+    }
 
 });
 
