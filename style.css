@@ -2048,6 +2048,563 @@ footer p{
 }
 
 
+/* ==========================================================
+   ADMIN PANEL
+========================================================== */
+
+#adminPanel{
+
+display:none;
+
+width:100%;
+
+min-height:100vh;
+
+background:#0d1117;
+
+color:#fff;
+
+font-family:Poppins,sans-serif;
+
+}
+
+.adminContainer{
+
+display:flex;
+
+min-height:100vh;
+
+}
+
+.adminSidebar{
+
+width:270px;
+
+background:#161b22;
+
+padding:25px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+border-right:2px solid gold;
+
+}
+
+.adminLogo{
+
+text-align:center;
+
+margin-bottom:20px;
+
+}
+
+.adminLogo img{
+
+width:90px;
+
+height:90px;
+
+border-radius:50%;
+
+}
+
+.adminLogo h2{
+
+margin-top:10px;
+
+color:gold;
+
+}
+
+.adminMenu{
+
+padding:14px;
+
+border:none;
+
+border-radius:10px;
+
+background:#21262d;
+
+color:white;
+
+cursor:pointer;
+
+font-size:16px;
+
+text-align:left;
+
+transition:.3s;
+
+}
+
+.adminMenu:hover{
+
+background:gold;
+
+color:black;
+
+}
+
+.adminMenu.active{
+
+background:gold;
+
+color:black;
+
+font-weight:bold;
+
+}
+
+#logoutAdmin{
+
+margin-top:auto;
+
+padding:14px;
+
+border:none;
+
+border-radius:10px;
+
+background:#ff3b30;
+
+color:white;
+
+cursor:pointer;
+
+font-weight:bold;
+
+}
+
+.adminContent{
+
+flex:1;
+
+padding:30px;
+
+overflow:auto;
+
+}
+
+.adminPage{
+
+display:none;
+
+}
+
+.adminPage.active{
+
+display:block;
+
+   }
+
+/* ==========================================================
+   ADMIN DASHBOARD CARDS
+========================================================== */
+
+.adminCards{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
+
+margin-top:30px;
+
+}
+
+.adminCard{
+
+background:#161b22;
+
+border:2px solid gold;
+
+border-radius:15px;
+
+padding:25px;
+
+text-align:center;
+
+transition:.3s;
+
+box-shadow:0 0 20px rgba(255,215,0,.15);
+
+}
+
+.adminCard:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 0 30px rgba(255,215,0,.35);
+
+}
+
+.adminCard h2{
+
+font-size:36px;
+
+color:gold;
+
+margin-bottom:12px;
+
+}
+
+.adminCard p{
+
+font-size:16px;
+
+color:#ddd;
+
+}
+
+/* ==========================================================
+   ADMIN TABLES
+========================================================== */
+
+.adminTable{
+
+width:100%;
+
+border-collapse:collapse;
+
+margin-top:25px;
+
+background:#161b22;
+
+border-radius:15px;
+
+overflow:hidden;
+
+}
+
+.adminTable th{
+
+background:gold;
+
+color:black;
+
+padding:15px;
+
+font-size:16px;
+
+text-align:left;
+
+}
+
+.adminTable td{
+
+padding:15px;
+
+border-bottom:1px solid #333;
+
+color:white;
+
+}
+
+.adminTable tr:hover{
+
+background:#20252d;
+
+}
+
+/* ==========================================================
+   ADMIN BUTTONS
+========================================================== */
+
+.adminBtn{
+
+padding:10px 18px;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+font-weight:bold;
+
+transition:.3s;
+
+margin:4px;
+
+}
+
+.approveBtn{
+
+background:#22c55e;
+
+color:white;
+
+}
+
+.approveBtn:hover{
+
+background:#16a34a;
+
+}
+
+.rejectBtn{
+
+background:#ef4444;
+
+color:white;
+
+}
+
+.rejectBtn:hover{
+
+background:#dc2626;
+
+}
+
+.editBtn{
+
+background:#3b82f6;
+
+color:white;
+
+}
+
+.editBtn:hover{
+
+background:#2563eb;
+
+}
+
+.deleteBtn{
+
+background:#ff9800;
+
+color:white;
+
+}
+
+.deleteBtn:hover{
+
+background:#f57c00;
+
+}
+
+/* ==========================================================
+   ADMIN FORMS
+========================================================== */
+
+.adminContent input,
+.adminContent textarea,
+.adminContent select{
+
+width:100%;
+
+padding:12px;
+
+margin:10px 0;
+
+border-radius:10px;
+
+border:1px solid #444;
+
+background:#0d1117;
+
+color:white;
+
+outline:none;
+
+font-size:15px;
+
+}
+
+.adminContent textarea{
+
+resize:vertical;
+
+min-height:120px;
+
+}
+
+.adminContent input:focus,
+.adminContent textarea:focus,
+.adminContent select:focus{
+
+border-color:gold;
+
+box-shadow:0 0 10px rgba(255,215,0,.35);
+
+   }
+
+/* ==========================================================
+   ADMIN CONTAINERS
+========================================================== */
+
+#adminRegistrationsContainer,
+#adminLuckyContainer,
+#adminCustomContainer,
+#adminNoticeContainer,
+#adminSupportContainer,
+#adminWithdrawContainer,
+#adminSettingsContainer{
+
+background:#161b22;
+
+border:2px solid gold;
+
+border-radius:15px;
+
+padding:20px;
+
+margin-top:20px;
+
+min-height:300px;
+
+box-shadow:0 0 20px rgba(255,215,0,.15);
+
+overflow:auto;
+
+}
+
+/* ==========================================================
+   STATUS BADGES
+========================================================== */
+
+.statusBadge{
+
+display:inline-block;
+
+padding:6px 14px;
+
+border-radius:20px;
+
+font-size:13px;
+
+font-weight:bold;
+
+}
+
+.statusPending{
+
+background:#ff9800;
+
+color:#fff;
+
+}
+
+.statusApproved{
+
+background:#22c55e;
+
+color:#fff;
+
+}
+
+.statusRejected{
+
+background:#ef4444;
+
+color:#fff;
+
+}
+
+/* ==========================================================
+   ADMIN HEADER
+========================================================== */
+
+.adminContent h1{
+
+font-size:32px;
+
+color:gold;
+
+margin-bottom:20px;
+
+border-bottom:2px solid gold;
+
+padding-bottom:10px;
+
+}
+
+/* ==========================================================
+   SCROLLBAR
+========================================================== */
+
+.adminContent::-webkit-scrollbar,
+#adminRegistrationsContainer::-webkit-scrollbar,
+#adminLuckyContainer::-webkit-scrollbar,
+#adminCustomContainer::-webkit-scrollbar,
+#adminNoticeContainer::-webkit-scrollbar,
+#adminSupportContainer::-webkit-scrollbar,
+#adminWithdrawContainer::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+.adminContent::-webkit-scrollbar-thumb,
+#adminRegistrationsContainer::-webkit-scrollbar-thumb,
+#adminLuckyContainer::-webkit-scrollbar-thumb,
+#adminCustomContainer::-webkit-scrollbar-thumb,
+#adminNoticeContainer::-webkit-scrollbar-thumb,
+#adminSupportContainer::-webkit-scrollbar-thumb,
+#adminWithdrawContainer::-webkit-scrollbar-thumb{
+
+background:gold;
+
+border-radius:10px;
+
+}
+
+/* ==========================================================
+   MOBILE RESPONSIVE
+========================================================== */
+
+@media(max-width:900px){
+
+.adminContainer{
+
+flex-direction:column;
+
+}
+
+.adminSidebar{
+
+width:100%;
+
+border-right:none;
+
+border-bottom:2px solid gold;
+
+}
+
+.adminCards{
+
+grid-template-columns:1fr;
+
+}
+
+.adminContent{
+
+padding:15px;
+
+}
+
+.adminTable{
+
+display:block;
+
+overflow-x:auto;
+
+white-space:nowrap;
+
+}
+
+}
+
+
+
+
 /* ========= END OF STYLE.CSS ========= */
 
 
