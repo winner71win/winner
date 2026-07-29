@@ -985,9 +985,6 @@ async function(){
    THREE DOT MENU
 ========================================================== */
 
-const threeDotBtn = document.getElementById("threeDotBtn");
-const threeDotMenu = document.getElementById("threeDotMenu");
-
 if (threeDotBtn && threeDotMenu) {
 
     threeDotBtn.addEventListener("click", (e) => {
