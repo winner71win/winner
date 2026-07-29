@@ -2000,6 +2000,54 @@ footer p{
 
 }
 
+/* ==========================
+   THREE DOT MENU
+========================== */
+
+.headerActions{
+    position:relative;
+}
+
+#threeDotMenu{
+    position:absolute;
+    top:55px;
+    right:0;
+    width:220px;
+    background:#1b1b1b;
+    border:1px solid gold;
+    border-radius:12px;
+    display:none;
+    flex-direction:column;
+    overflow:hidden;
+    z-index:9999;
+    box-shadow:0 0 20px rgba(255,215,0,.3);
+}
+
+#threeDotMenu.show{
+    display:flex;
+}
+
+#threeDotMenu button{
+    background:none;
+    border:none;
+    color:white;
+    padding:15px;
+    text-align:left;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+#threeDotMenu button:hover{
+    background:gold;
+    color:black;
+}
+
+#threeDotBtn{
+    cursor:pointer;
+}
+
+
 /* ========= END OF STYLE.CSS ========= */
 
 
