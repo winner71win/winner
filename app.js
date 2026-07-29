@@ -916,6 +916,14 @@ async function adminLogin() {
         }
 
         showToast("Admin Login Successful");
+       // Hide Main Website
+mainWebsite.style.display = "none";
+
+// Show Admin Panel
+document.getElementById("adminPanel").style.display = "block";
+
+// Load Dashboard
+loadAdminDashboard();
 
         // Admin controls will be enabled here later
 
@@ -1150,6 +1158,50 @@ document.getElementById("searchIdBtn")?.addEventListener("click", async () => {
     }
 
 });
+
+/* ==========================================================
+   ADMIN DASHBOARD
+========================================================== */
+
+function loadAdminDashboard() {
+
+    document.getElementById("adminPlayersCount").textContent = "Loading...";
+    document.getElementById("adminPendingCount").textContent = "Loading...";
+    document.getElementById("adminLuckyCount").textContent = "Loading...";
+    document.getElementById("adminCustomCount").textContent = "Loading...";
+
+}
+
+/* ==========================================================
+   ADMIN MENU
+========================================================== */
+
+document.querySelectorAll(".adminMenu").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        document.querySelectorAll(".adminMenu").forEach(menu => {
+
+            menu.classList.remove("active");
+
+        });
+
+        button.classList.add("active");
+
+        document.querySelectorAll(".adminPage").forEach(page => {
+
+            page.style.display = "none";
+
+        });
+
+        const pageId = button.dataset.page + "Page";
+
+        document.getElementById(pageId).style.display = "block";
+
+    });
+
+});
+
 
 /* ==========================================================
    END OF APP.JS
