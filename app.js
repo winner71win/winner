@@ -291,6 +291,7 @@ if (unlockButton) {
 ========================================================== */
 
 loadWebsiteSettings();
+console.log("loadWebsiteSettings completed");
 
 /* ==========================================================
    PART 1B ENDS
@@ -436,8 +437,11 @@ if(menuBtn){
 ========================================================== */
 
 loadNotices();
+console.log("loadNotices completed");
 
 loadStats();
+console.log("loadStats completed");
+
 
 /* ==========================================================
    PART 1C ENDS
