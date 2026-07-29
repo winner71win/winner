@@ -1091,6 +1091,66 @@ document.getElementById("backHome")?.addEventListener("click", () => {
 });
 
 /* ==========================================================
+   SEARCH REGISTRATION ID
+========================================================== */
+
+document.getElementById("searchIdBtn")?.addEventListener("click", async () => {
+
+    const registrationId = document
+        .getElementById("searchRegistrationId")
+        .value
+        .trim();
+
+    if (registrationId === "") {
+
+        showToast("Enter Registration ID");
+
+        return;
+
+    }
+
+    try {
+
+        const snapshot = await getDocs(registrationsRef);
+
+        let found = false;
+
+        snapshot.forEach((docItem) => {
+
+            const data = docItem.data();
+
+            if (data.registrationId === registrationId) {
+
+                found = true;
+
+                document.getElementById("registrationResult").innerHTML = `
+                    <b>Name:</b> ${data.name}<br>
+                    <b>WIN ID:</b> ${data.registrationId}<br>
+                    <b>Status:</b> ${data.status || "Pending"}
+                `;
+
+            }
+
+        });
+
+        if (!found) {
+
+            document.getElementById("registrationResult").innerHTML =
+                "<span style='color:red;'>Registration ID Not Found</span>";
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        showToast("Unable to Search");
+
+    }
+
+});
+
+/* ==========================================================
    END OF APP.JS
 ========================================================== */
 
