@@ -1464,6 +1464,8 @@ window.approveRegistration = async function (docId) {
 
 function loadAdminCustom() {
 
+   console.log("loadAdminCustom called");
+
     const container =
     document.getElementById("adminCustomContainer");
 
