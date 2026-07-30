@@ -1426,6 +1426,65 @@ window.approveRegistration = async function (docId) {
 
 };
 
+/* ==========================================================
+   ADMIN CUSTOM
+========================================================== */
+
+function loadAdminCustom() {
+
+    const container =
+    document.getElementById("adminCustomContainer");
+
+    if (!container) return;
+
+    onSnapshot(customRef, (snapshot) => {
+
+        container.innerHTML = "";
+
+        if (snapshot.empty) {
+
+            container.innerHTML = `
+                <div class="adminCard">
+                    <h3>No Custom Matches Found</h3>
+                </div>
+            `;
+
+            return;
+
+        }
+
+        snapshot.forEach((docItem) => {
+
+            const data = docItem.data();
+
+            container.innerHTML += `
+
+                <div class="adminCard">
+
+                    <h3>${data.title || "Free Fire Custom"}</h3>
+
+                    <p><b>Room ID:</b> ${data.roomId || "-"}</p>
+
+                    <p><b>Password:</b> ${data.password || "-"}</p>
+
+                    <p><b>Entry Fee:</b> ₹${data.entryFee || 0}</p>
+
+                    <button
+                        class="adminBtn approveBtn">
+
+                        Edit
+
+                    </button>
+
+                </div>
+
+            `;
+
+        });
+
+    });
+
+}
 
 /* ==========================================================
    END OF APP.JS
