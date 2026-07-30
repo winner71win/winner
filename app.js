@@ -925,16 +925,17 @@ async function adminLogin() {
 
         if (mainWebsite) {
 
-            mainWebsite.style.display = "none";
+    mainWebsite.style.display = "block";
 
-        }
+}
 
-        document.getElementById("adminPanel").style.display = "block";
+const adminPanel = document.getElementById("adminPanel");
 
-        loadAdminDashboard();
+adminPanel.style.display = "block";
 
-        loadAdminRegistrations();
+loadAdminDashboard();
 
+loadAdminRegistrations();
     }
 
     catch (error) {
