@@ -120,6 +120,30 @@ const closeCheckId = document.getElementById("closeCheckId");
 
 const backHome = document.getElementById("backHome");
 
+function normalizeExternalUrl(url) {
+
+    const value = String(url || "").trim();
+
+    if (!value) return "#";
+
+    if (
+        value.startsWith("http://") ||
+        value.startsWith("https://") ||
+        value.startsWith("mailto:") ||
+        value.startsWith("tel:")
+    ) {
+        return value;
+    }
+
+    if (value.startsWith("www.")) {
+        return `https://${value}`;
+    }
+
+    return `https://${value}`;
+
+}
+
+
 /* ==========================================================
    PART 1A ENDS
 ========================================================== */
@@ -181,12 +205,20 @@ async function loadWebsiteSettings(){
 
             websiteSettings = snapshot.data();
 
-            if(document.getElementById("joinWhatsapp")){
+            const joinWhatsapp = document.getElementById("joinWhatsapp");
 
-                document.getElementById("joinWhatsapp").href =
-                websiteSettings.whatsappLink || "#";
+if (joinWhatsapp) {
 
-            }
+    joinWhatsapp.href =
+        normalizeExternalUrl(
+            websiteSettings.whatsappLink
+        );
+
+    joinWhatsapp.target = "_blank";
+
+    joinWhatsapp.rel = "noopener noreferrer";
+
+}
 
             if(document.getElementById("upiId")){
 
@@ -660,16 +692,27 @@ async function registerPlayer(e){
     currentPlayer.email =
     document.getElementById("playerEmail").value.trim();
 
-    currentPlayer.uid =
-    document.getElementById("gameUid").value.trim();
+    const uidInput =
+document.getElementById("gameUid");
 
-    document.getElementById(
-        "registrationModal"
-    ).style.display="none";
+currentPlayer.uid =
+uidInput ? uidInput.value.trim() : "";
 
-    document.getElementById(
-        "paymentModal"
-    ).style.display="flex";
+if(currentPlayer.uid === ""){
+
+    showToast("Enter Free Fire UID");
+
+    return;
+
+}
+
+document.getElementById(
+    "registrationModal"
+).style.display="none";
+
+document.getElementById(
+    "paymentModal"
+).style.display="flex";
 
 }
 
@@ -701,33 +744,60 @@ async function verifyPayment() {
 
     try {
 
-        const snapshot = await getDocs(registrationsRef);
+        const counterRef = doc(db, "counters", "registration");
 
-        const registrationNumber = snapshot.size + 1;
+let registrationId = "";
 
-        const registrationId =
-            "WIN-" +
-            new Date().getFullYear() +
-            "-" +
-            String(registrationNumber).padStart(6, "0");
+await runTransaction(db, async (transaction) => {
 
-        currentPlayer.registrationId = registrationId;
-        currentPlayer.transactionId = transactionId;
-        currentPlayer.status = "Pending";
-        currentPlayer.approved = false;
-        currentPlayer.createdAt = serverTimestamp();
+    const counterSnap = await transaction.get(counterRef);
 
-        await addDoc(registrationsRef, currentPlayer);
+    const lastNumber = counterSnap.exists()
+        ? (counterSnap.data().lastNumber || 0)
+        : 0;
 
-        document.getElementById("paymentModal").style.display = "none";
-        document.getElementById("successModal").style.display = "flex";
+    const nextNumber = lastNumber + 1;
 
-        document.getElementById("registrationId").textContent =
-            registrationId;
+    const randomCode = Math.random()
+        .toString(36)
+        .substring(2, 8)
+        .toUpperCase();
 
-        loadStats();
+    registrationId =
+        `WIN-${randomCode}-${String(nextNumber).padStart(4, "0")}`;
 
-        showToast("Registration Submitted Successfully");
+    transaction.set(
+        counterRef,
+        {
+            lastNumber: nextNumber
+        },
+        {
+            merge: true
+        }
+    );
+
+});
+
+currentPlayer.registrationId = registrationId;
+currentPlayer.transactionId = transactionId;
+currentPlayer.status = "Pending";
+currentPlayer.paymentStatus = "Pending";
+currentPlayer.withdrawalStatus = "Pending";
+currentPlayer.upiId = websiteSettings.upiId || "";
+currentPlayer.approved = false;
+currentPlayer.createdAt = serverTimestamp();
+
+await addDoc(registrationsRef, currentPlayer);
+
+document.getElementById("paymentModal").style.display = "none";
+document.getElementById("successModal").style.display = "flex";
+
+document.getElementById("registrationId").textContent =
+registrationId;
+
+loadStats();
+
+showToast("Registration Submitted Successfully");
 
     } catch (error) {
 
@@ -925,17 +995,43 @@ async function adminLogin() {
 
         if (mainWebsite) {
 
-    mainWebsite.style.display = "block";
+            mainWebsite.style.display = "block";
 
-}
+            Array.from(mainWebsite.children).forEach((child) => {
 
-const adminPanel = document.getElementById("adminPanel");
+                if (
+                    child.id !== "adminPanel" &&
+                    child.id !== "toast"
+                ) {
 
-adminPanel.style.display = "block";
+                    child.style.display = "none";
 
-loadAdminDashboard();
+                }
 
-loadAdminRegistrations();
+            });
+
+        }
+
+        const adminPanel =
+            document.getElementById("adminPanel");
+
+        if (adminPanel) {
+
+            adminPanel.style.display = "block";
+
+            adminPanel.classList.add("active");
+
+            adminPanel.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+        loadAdminDashboard();
+
+        loadAdminRegistrations();
+
     }
 
     catch (error) {
