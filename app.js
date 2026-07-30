@@ -1207,7 +1207,6 @@ function loadAdminDashboard() {
     });
 
                    }
-
 /* ==========================================================
    ADMIN MENU
 ========================================================== */
@@ -1228,15 +1227,29 @@ document.querySelectorAll(".adminMenu").forEach(button => {
 
             page.style.display = "none";
 
+            page.classList.remove("active");
+
         });
 
-        const pageId = button.dataset.page + "Page";
+        const page = document.getElementById(
+            button.dataset.page + "Page"
+        );
 
-        document.getElementById(pageId).style.display = "block";
+        if (page) {
+
+            page.style.display = "block";
+
+            page.classList.add("active");
+
+        }
 
     });
 
 });
+
+/* Show dashboard by default */
+
+document.getElementById("dashboardPage").style.display = "block";
 
 /* ==========================================================
    LOAD ADMIN REGISTRATIONS
