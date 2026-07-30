@@ -897,221 +897,320 @@
 
 </div>
 
- <!-- ===========================
+<!-- ===========================
      ADMIN PANEL
 =========================== -->
 
 <section id="adminPanel" style="display:none;">
 
-<div class="adminContainer">
-
-<div class="adminSidebar">
-
-<div class="adminLogo">
-
-<img src="images/logo.png" alt="Winner">
-
-<h2>Winner Admin</h2>
-
-</div>
-
-<button class="adminMenu active" data-page="dashboard">
-<i class="fa-solid fa-chart-line"></i>
-Dashboard
-</button>
-
-<button class="adminMenu" data-page="registrations">
-<i class="fa-solid fa-users"></i>
-Registrations
-</button>
-
-<button class="adminMenu" data-page="luckydraw">
-<i class="fa-solid fa-gift"></i>
-Lucky Draw
-</button>
-
-<button class="adminMenu" data-page="custom">
-<i class="fa-solid fa-gamepad"></i>
-FF Custom
-</button>
-
-<button class="adminMenu" data-page="notice">
-<i class="fa-solid fa-bullhorn"></i>
-Notices
-</button>
-
-<button class="adminMenu" data-page="support">
-<i class="fa-solid fa-headset"></i>
-Support
-</button>
-
-<button class="adminMenu" data-page="withdraw">
-<i class="fa-solid fa-wallet"></i>
-Withdrawals
-</button>
-
-<button class="adminMenu" data-page="settings">
-<i class="fa-solid fa-gear"></i>
-Settings
-</button>
-
-<button id="logoutAdmin">
-<i class="fa-solid fa-right-from-bracket"></i>
-Logout
-</button>
-
-</div>
-
-<div class="adminContent">
-
-<!-- DASHBOARD -->
-
-<div class="adminPage active" id="dashboardPage">
-
-<h1>Dashboard</h1>
-
-<div class="adminCards">
-
-<div class="adminCard">
-
-<h2 id="adminPlayersCount">0</h2>
-
-<p>Total Registrations</p>
-
-</div>
-
-<div class="adminCard">
-
-<h2 id="adminPendingCount">0</h2>
-
-<p>Pending Approval</p>
-
-</div>
-
-<div class="adminCard">
-
-<h2 id="adminLuckyCount">0</h2>
-
-<p>Lucky Draws</p>
-
-</div>
-
-<div class="adminCard">
-
-<h2 id="adminCustomCount">0</h2>
-
-<p>Custom Matches</p>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- REGISTRATIONS -->
-
-<div class="adminPage" id="registrationsPage">
-
-<h1>Player Registrations</h1>
-
-<div id="adminRegistrationsContainer">
-
-Loading...
-
-</div>
-
-</div>
-
-<!-- LUCKY DRAW -->
-
-<div class="adminPage" id="luckydrawPage">
-
-<h1>Lucky Draw Management</h1>
-
-<div id="adminLuckyContainer">
-
-Loading...
-
-</div>
-
-</div>
-
-<!-- CUSTOM -->
-
-<div class="adminPage" id="customPage">
-
-<h1>FF Custom Management</h1>
-
-<div id="adminCustomContainer">
-
-Loading...
-
-</div>
-
-</div>
-
-<!-- NOTICE -->
-
-<div class="adminPage" id="noticePage">
-
-<h1>Notice Management</h1>
-
-<div id="adminNoticeContainer">
-
-Loading...
-
-</div>
-
-</div>
-
-<!-- SUPPORT -->
-
-<div class="adminPage" id="supportPage">
-
-<h1>Support Messages</h1>
-
-<div id="adminSupportContainer">
-
-Loading...
-
-</div>
-
-</div>
-
-<!-- WITHDRAWALS -->
-
-<div class="adminPage" id="withdrawPage">
-
-<h1>Withdrawals</h1>
-
-<div id="adminWithdrawContainer">
-
-Loading...
-
-</div>
-
-</div>
-
-<!-- SETTINGS -->
-
-<div class="adminPage" id="settingsPage">
-
-<h1>Website Settings</h1>
-
-<div id="adminSettingsContainer">
-
-Loading...
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>   
+    <div class="adminContainer">
+
+        <!-- SIDEBAR -->
+        <div class="adminSidebar">
+
+            <div class="adminLogo">
+                <img src="images/logo.png" alt="Winner Logo">
+                <h2>Winner Admin</h2>
+            </div>
+
+            <button class="adminMenu active" data-page="dashboard">📊 Dashboard</button>
+            <button class="adminMenu" data-page="registrations">👥 Player Registrations</button>
+            <button class="adminMenu" data-page="custom">🎮 Custom Matches</button>
+            <button class="adminMenu" data-page="luckydraw">🎁 Lucky Draw</button>
+            <button class="adminMenu" data-page="notice">📢 Notices</button>
+            <button class="adminMenu" data-page="support">💬 Support</button>
+            <button class="adminMenu" data-page="withdraw">💸 Withdrawals</button>
+            <button class="adminMenu" data-page="settings">⚙ Website Settings</button>
+            <button class="adminMenu" data-page="admins">👨‍💼 Admin Settings</button>
+
+            <button id="logoutAdmin">🚪 Logout</button>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="adminContent">
+
+            <!-- DASHBOARD -->
+            <div class="adminPage active" id="dashboardPage">
+                <h1>Dashboard</h1>
+
+                <div class="adminCards">
+                    <div class="adminCard"><h2 id="adminPlayersCount">0</h2><p>Total Players</p></div>
+                    <div class="adminCard"><h2 id="adminPendingCount">0</h2><p>Pending Players</p></div>
+                    <div class="adminCard"><h2 id="adminApprovedCount">0</h2><p>Approved Players</p></div>
+                    <div class="adminCard"><h2 id="adminCustomCount">0</h2><p>Custom Matches</p></div>
+                    <div class="adminCard"><h2 id="adminLuckyCount">0</h2><p>Lucky Draws</p></div>
+                    <div class="adminCard"><h2 id="adminWithdrawCount">0</h2><p>Withdrawals</p></div>
+                    <div class="adminCard"><h2 id="adminSupportCount">0</h2><p>Support Messages</p></div>
+                    <div class="adminCard"><h2 id="adminRevenue">₹0</h2><p>Total Revenue</p></div>
+                </div>
+            </div>
+
+            <!-- PLAYER REGISTRATIONS -->
+            <div class="adminPage" id="registrationsPage">
+                <h1>Player Registrations</h1>
+
+                <div class="adminTools">
+                    <input type="text" id="adminRegistrationSearch" placeholder="Search by WIN ID / Name / Phone">
+                    <button id="searchAdminRegistrationBtn" class="adminBtn editBtn">Search</button>
+                </div>
+
+                <div id="adminRegistrationsContainer">Loading...</div>
+            </div>
+
+            <!-- CUSTOM MATCHES -->
+            <div class="adminPage" id="customPage">
+                <h1>Custom Matches</h1>
+                <div class="adminActionsTop">
+                    <button id="addCustomMatchBtn" class="adminBtn approveBtn">➕ Add New Match</button>
+                </div>
+                <div id="adminCustomContainer">Loading...</div>
+            </div>
+
+            <!-- LUCKY DRAW -->
+            <div class="adminPage" id="luckydrawPage">
+                <h1>Lucky Draw</h1>
+                <div class="adminActionsTop">
+                    <button id="addLuckyDrawBtn" class="adminBtn approveBtn">➕ Add Lucky Draw</button>
+                </div>
+                <div id="adminLuckyContainer">Loading...</div>
+            </div>
+
+            <!-- NOTICES -->
+            <div class="adminPage" id="noticePage">
+                <h1>Notices</h1>
+                <div class="adminActionsTop">
+                    <button id="addNoticeBtn" class="adminBtn approveBtn">➕ Add Notice</button>
+                </div>
+                <div id="adminNoticeContainer">Loading...</div>
+            </div>
+
+            <!-- SUPPORT -->
+            <div class="adminPage" id="supportPage">
+                <h1>Support Messages</h1>
+                <div id="adminSupportContainer">Loading...</div>
+            </div>
+
+            <!-- WITHDRAWALS -->
+            <div class="adminPage" id="withdrawPage">
+                <h1>Withdrawals</h1>
+                <div id="adminWithdrawContainer">Loading...</div>
+            </div>
+
+            <!-- WEBSITE SETTINGS -->
+            <div class="adminPage" id="settingsPage">
+                <h1>Website Settings</h1>
+                <div id="adminSettingsContainer">Loading...</div>
+            </div>
+
+            <!-- ADMIN SETTINGS -->
+            <div class="adminPage" id="adminsPage">
+                <h1>Admin Settings</h1>
+                <div id="adminAdminsContainer">Loading...</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ADD / EDIT CUSTOM MATCH MODAL -->
+    <div id="customMatchModal" class="modal">
+        <div class="modalContent">
+            <span class="closeAdmin" id="closeCustomMatchModal">&times;</span>
+            <h2>Add / Edit Custom Match</h2>
+
+            <form id="customMatchForm">
+                <input type="hidden" id="customMatchDocId">
+
+                <input type="text" id="customTitle" placeholder="Title / Match Name" required>
+                <input type="text" id="customMode" placeholder="Mode (Solo / Duo / Squad / CS / Any)">
+                <input type="number" id="customEntryFee" placeholder="Entry Fee (₹)" min="0">
+                <input type="number" id="customPrize" placeholder="Prize Pool (₹)" min="0">
+                <input type="number" id="customPerKill" placeholder="Per Kill Prize (₹)" min="0">
+                <input type="number" id="customBooyah" placeholder="Booyah Prize (₹)" min="0">
+                <input type="text" id="customMap" placeholder="Map">
+                <input type="date" id="customDate">
+                <input type="time" id="customTime">
+                <input type="text" id="customRoomId" placeholder="Room ID">
+                <input type="text" id="customPassword" placeholder="Room Password">
+                <input type="text" id="customBanner" placeholder="Banner Image URL (optional)">
+                <textarea id="customDescription" rows="5" placeholder="Description / Rules / Anything you want to write"></textarea>
+
+                <select id="customStatus">
+                    <option value="Open">Open</option>
+                    <option value="Full">Full</option>
+                    <option value="Completed">Completed</option>
+                </select>
+
+                <label style="display:flex;align-items:center;gap:10px;margin:10px 0;">
+                    <input type="checkbox" id="customJoinEnabled" checked>
+                    Join Button Enabled
+                </label>
+
+                <button type="submit" class="adminBtn approveBtn">Save Match</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ADD / EDIT LUCKY DRAW MODAL -->
+    <div id="luckyDrawModal" class="modal">
+        <div class="modalContent">
+            <span class="closeAdmin" id="closeLuckyDrawModal">&times;</span>
+            <h2>Add / Edit Lucky Draw</h2>
+
+            <form id="luckyDrawForm">
+                <input type="hidden" id="luckyDrawDocId">
+
+                <input type="text" id="luckyTitle" placeholder="Lucky Draw Title" required>
+                <input type="number" id="luckyEntryFee" placeholder="Entry Fee (₹)" min="0">
+                <input type="number" id="luckyPrize" placeholder="Prize (₹)" min="0">
+                <input type="text" id="luckyWinners" placeholder="Top Winners (e.g. Top 3 Winners)">
+                <input type="date" id="luckyDate">
+                <input type="time" id="luckyTime">
+                <textarea id="luckyDescription" rows="5" placeholder="Description / Rules / Prize details / Anything you want to write"></textarea>
+
+                <select id="luckyStatus">
+                    <option value="LIVE">LIVE</option>
+                    <option value="FULL">FULL</option>
+                    <option value="COMPLETED">COMPLETED</option>
+                </select>
+
+                <label style="display:flex;align-items:center;gap:10px;margin:10px 0;">
+                    <input type="checkbox" id="luckyJoinEnabled" checked>
+                    Register Button Enabled
+                </label>
+
+                <button type="submit" class="adminBtn approveBtn">Save Lucky Draw</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ADD NOTICE MODAL -->
+    <div id="noticeModal" class="modal">
+        <div class="modalContent">
+            <span class="closeAdmin" id="closeNoticeModal">&times;</span>
+            <h2>Add / Edit Notice</h2>
+
+            <form id="noticeForm">
+                <input type="hidden" id="noticeDocId">
+
+                <input type="text" id="noticeTitle" placeholder="Notice Title" required>
+                <textarea id="noticeDescription" rows="5" placeholder="Notice Description" required></textarea>
+
+                <label style="display:flex;align-items:center;gap:10px;margin:10px 0;">
+                    <input type="checkbox" id="noticePinned">
+                    Pin Notice
+                </label>
+
+                <button type="submit" class="adminBtn approveBtn">Save Notice</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- REPLY SUPPORT MODAL -->
+    <div id="supportReplyModal" class="modal">
+        <div class="modalContent">
+            <span class="closeAdmin" id="closeSupportReplyModal">&times;</span>
+            <h2>Reply to Support</h2>
+
+            <form id="supportReplyForm">
+                <input type="hidden" id="supportDocId">
+
+                <input type="text" id="supportReplyTo" placeholder="Reply To" readonly>
+                <textarea id="supportReplyMessage" rows="5" placeholder="Type your reply..." required></textarea>
+
+                <select id="supportReplyStatus">
+                    <option value="Pending">Pending</option>
+                    <option value="Solved">Solved</option>
+                </select>
+
+                <button type="submit" class="adminBtn approveBtn">Send Reply</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- WITHDRAWAL ACTION MODAL -->
+    <div id="withdrawalActionModal" class="modal">
+        <div class="modalContent">
+            <span class="closeAdmin" id="closeWithdrawalActionModal">&times;</span>
+            <h2>Withdrawal Action</h2>
+
+            <form id="withdrawalActionForm">
+                <input type="hidden" id="withdrawalDocId">
+
+                <input type="text" id="withdrawalPlayer" placeholder="Player Name" readonly>
+                <input type="text" id="withdrawalWinId" placeholder="WIN ID" readonly>
+                <input type="number" id="withdrawalAmount" placeholder="Amount" readonly>
+                <input type="text" id="withdrawalUpi" placeholder="UPI ID" readonly>
+
+                <select id="withdrawalStatus">
+                    <option value="Pending">Pending</option>
+                    <option value="Successful">Successful</option>
+                    <option value="Failed">Failed</option>
+                </select>
+
+                <input type="text" id="withdrawalTxn" placeholder="Transaction ID / Note">
+                <button type="submit" class="adminBtn approveBtn">Save Withdrawal</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- WEBSITE SETTINGS MODAL -->
+    <div id="websiteSettingsModal" class="modal">
+        <div class="modalContent">
+            <span class="closeAdmin" id="closeWebsiteSettingsModal">&times;</span>
+            <h2>Edit Website Settings</h2>
+
+            <form id="websiteSettingsForm">
+                <input type="text" id="settingWebsitePassword" placeholder="Website Password">
+                <input type="text" id="settingWhatsappLink" placeholder="WhatsApp Group / Channel Link">
+                <input type="text" id="settingUpiId" placeholder="UPI ID">
+                <input type="text" id="settingBannerText" placeholder="Banner Text">
+
+                <label style="display:flex;align-items:center;gap:10px;margin:10px 0;">
+                    <input type="checkbox" id="settingMaintenance">
+                    Maintenance Mode
+                </label>
+
+                <label style="display:flex;align-items:center;gap:10px;margin:10px 0;">
+                    <input type="checkbox" id="settingRegistrations">
+                    Registrations Enabled
+                </label>
+
+                <label style="display:flex;align-items:center;gap:10px;margin:10px 0;">
+                    <input type="checkbox" id="settingCustom">
+                    Custom Matches Enabled
+                </label>
+
+                <label style="display:flex;align-items:center;gap:10px;margin:10px 0;">
+                    <input type="checkbox" id="settingLucky">
+                    Lucky Draw Enabled
+                </label>
+
+                <button type="submit" class="adminBtn approveBtn">Save Settings</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ADMIN FORM MODAL -->
+    <div id="adminSettingsModal" class="modal">
+        <div class="modalContent">
+            <span class="closeAdmin" id="closeAdminSettingsModal">&times;</span>
+            <h2>Admin Management</h2>
+
+            <form id="adminSettingsForm">
+                <input type="email" id="newAdminEmail" placeholder="New Admin Email">
+                <input type="password" id="newAdminPassword" placeholder="New Admin Password">
+                <button type="submit" class="adminBtn approveBtn">Add Admin</button>
+            </form>
+
+            <div id="adminListContainer" style="margin-top:20px;">
+                Loading...
+            </div>
+        </div>
+    </div>
+
+            </section>
     
+
 </div>
 <!-- End of #mainWebsite -->
 
