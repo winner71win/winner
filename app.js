@@ -1335,11 +1335,43 @@ document.querySelectorAll(".adminMenu").forEach(button => {
 
         if (page) {
 
-            page.style.display = "block";
+    page.style.display = "block";
 
-            page.classList.add("active");
+    page.classList.add("active");
 
-        }
+    switch (button.dataset.page) {
+
+        case "registrations":
+            loadAdminRegistrations();
+            break;
+
+        case "custom":
+            loadAdminCustom();
+            break;
+
+        case "notice":
+            if (typeof loadAdminNotices === "function")
+                loadAdminNotices();
+            break;
+
+        case "support":
+            if (typeof loadAdminSupport === "function")
+                loadAdminSupport();
+            break;
+
+        case "withdraw":
+            if (typeof loadAdminWithdrawals === "function")
+                loadAdminWithdrawals();
+            break;
+
+        case "settings":
+            if (typeof loadAdminSettings === "function")
+                loadAdminSettings();
+            break;
+
+    }
+
+       }
 
     });
 
