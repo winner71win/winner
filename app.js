@@ -61,12 +61,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-import { initializeFirestore } from "firebase/firestore";
-
-const db = initializeFirestore(app, {
-    experimentalAutoDetectLongPolling: true,
-    useFetchStreams: false
-});
+const db = getFirestore(app);
 
 const auth = getAuth(app);
 
