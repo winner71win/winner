@@ -41,7 +41,7 @@ import {
 
 const firebaseConfig = {
 
-    apiKey: "YOUR_API_KEY",
+    apiKey: "AIzaSyCcKBg2iA2w82A0DCTdtgWengZor9AjbD0",
 
     authDomain: "winner-534bd.firebaseapp.com",
 
@@ -49,9 +49,9 @@ const firebaseConfig = {
 
     storageBucket: "winner-534bd.firebasestorage.app",
 
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    messagingSenderId: "189079383650",
 
-    appId: "YOUR_APP_ID"
+    appId: "1:189079383650:web:79b6ac507b3a168a1eeb3b"
 
 };
 
