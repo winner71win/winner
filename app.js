@@ -3938,17 +3938,37 @@ window.addEventListener(
 
         loadWebsiteSettings();
 
-        loadStats();
+loadStats();
 
-        loadNotices();
+loadNotices();
 
-        loadCustomMatches();
+loadCustomMatches();
 
-        loadLuckyDraw();
+loadLuckyDraw();
 
     }
 
 );
+
+window.addEventListener("load", () => {
+
+    const loader = document.getElementById("loader");
+
+    if (loader) {
+
+        loader.style.display = "none";
+
+    }
+
+    const passwordScreen = document.getElementById("passwordScreen");
+
+    if (passwordScreen) {
+
+        passwordScreen.style.display = "flex";
+
+    }
+
+});
 
 /* ==========================================================
    END OF APP.JS
